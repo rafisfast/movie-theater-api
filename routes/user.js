@@ -18,8 +18,7 @@ router.get("/user/:id", async (req,res) => {
 
 router.get("/user/:id/shows", async (req,res) => {
     const id = req.params.id;
-    // const data = await User_show.findAll({where: { userId: id }});
-    // const data = await User.findByPk(id,{joinTableAttributes: [], include: { model: Show }});
+    if (!id) return res.status(400).end();
     const data = await User.findByPk(id,
         {
             include: [
@@ -31,14 +30,24 @@ router.get("/user/:id/shows", async (req,res) => {
                 }
             ]
         });
-
-    console.log(JSON.stringify(data));
-    // if (!user_show) return res.status(400).end();
+    
+    if (!data) return res.status(400).end();
 
     res.status(200).send(data);
 })
 
-router.put("update", (req,res) => {
+router.put("/user/:id/show/:showid", async (req,res) => {
+
+    const id = req.params.id;
+    const showid = req.params.showid;
+
+    if (!id || !showid) return res.status(400).end();
+    const data = await User_show.create({
+        userId: id,
+        showId: showid
+    });
+
+    res.status(200).send(data);
 
 })
 
