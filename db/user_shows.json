@@ -1,0 +1,25 @@
+{
+    "data": [
+      {
+        "userId": 1,
+        "showId": 1
+      },
+      {
+        "userId": 1,
+        "showId": 2
+      },
+      {
+        "userId": 1,
+        "showId": 3
+      },
+      {
+        "userId": 1,
+        "showId": 4
+      },
+      {
+        "userId": 1,
+        "showId": 5
+      }
+    ]
+  }
+  
